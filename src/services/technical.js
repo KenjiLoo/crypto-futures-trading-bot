@@ -1,11 +1,11 @@
 const { MACD, EMA } = require("technicalindicators");
-const bingxService = require("./bingxService");
+const placeOrder = require("./placeOrder");
 const { TRADING_PAIRS, RISK_REWARD_RATIO } = require("../config/bingx");
 
 class StrategyService {
   async analyzeMarket() {
     for (const symbol of TRADING_PAIRS) {
-      const marketData = await bingxService.fetchMarketData(symbol);
+      const marketData = await placeOrder.fetchMarketData(symbol);
       const closes = marketData.map((candle) => parseFloat(candle.close));
 
       const ema200 = EMA.calculate({ period: 200, values: closes });

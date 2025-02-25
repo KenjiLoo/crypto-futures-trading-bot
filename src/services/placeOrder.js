@@ -6,7 +6,7 @@ const API_URL = "https://api.bingx.com"; // Adjust for real market endpoints
 class BingXService {
   async fetchMarketData(symbol) {
     const response = await axios.get(`${API_URL}/v1/market/kline`, {
-      params: { symbol, interval: "4h", limit: 200 },
+      params: { symbol, interval: "4h", limit: 100 },
     });
     return response.data;
   }
